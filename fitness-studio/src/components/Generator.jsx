@@ -1,6 +1,8 @@
 import React from "react";
+import { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { SCHEMES, WORKOUTS } from '../utils/swoldier'
+
 
 function Header(props) {
   const { index, title, description } = props;
@@ -15,7 +17,19 @@ function Header(props) {
   );
 }
 export default function Generator() {
-  let showModal = false
+  const [showModal , setModal] = useState(false);
+  const [poison ,setpoison] = useState('individual')
+  const [muscles , setMuscles] = useState([])
+  const [goals ,setGoals] = useState('strength_power')
+  //let showModal = false
+  function toggleModal(){
+    setModal(!showModal)
+  }
+  
+  function updateMuscles(muscleGroup){
+   //  35:15
+  }
+
   return (
     <SectionWrapper
       header={"generate your workout"}
@@ -29,9 +43,18 @@ export default function Generator() {
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
       {Object.keys(WORKOUTS).map((type,typeIndex)=>{
         return(
-          <button className='bg-slate-950 border border-blue-400 py-3 duration-200 hover:border-blue-600 rounded-lg' key={typeIndex}>
-             <p className="capitalize">{type}</p>
-          </button>
+          <button
+  onClick={() => {
+    setpoison(type);
+  }}
+  className={
+    'bg-slate-950 border py-3 duration-200 hover:border-blue-600 rounded-lg ' + 
+    (type === poison ? ' border-blue-600' : ' border-blue-400')
+  }
+  key={typeIndex}
+>
+  <p className="capitalize">{type}</p>
+</button>
         
         )
          
@@ -43,16 +66,52 @@ export default function Generator() {
         title={'Lock on targets'}
         description={"Select the muscles judged for annihilation."}
       />
-      <div className='bg-slate-950 py-3 border border-solid border-blue-400 rounded-lg'>
-         <div className='relative flex items-center justify-center'>
+      <div className='bg-slate-950  border border-solid border-blue-400 rounded-lg flex flex-col'>
+         <button onClick={toggleModal}className='relative py-3 flex items-center justify-center'>
           <p>Select muscle groups</p>
           <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-sort-down"></i>
-         </div>
+         </button>
          {showModal && (
-            <div>modal</div>
+            <div className='flex flex-col px-3'>
+              {(poison === 'individual' ? WORKOUTS[poison] : Object.keys(WORKOUTS[poison])).map((muscleGroup,musclesGroupIndex) => {
+                 return(
+                    <button onClick{} key={musclesGroupIndex}
+                    className='hover:text-blue-400 duration-200'
+                    >
+                      <p className='uppercase'>{muscleGroup}</p>
+                    </button>
+                 )
+              })}
+              
+</div> //23:17
          )}
       </div>
    
+      <Header
+        index={"03"}
+        title={"Become Beast"}
+        description={"Select your ultimate objective."}
+      />
+      <div className='grid grid-cols-3  gap-4'>
+      {Object.keys(SCHEMES).map((SCHEME,SCHEMEIndex)=>{
+        return(
+          <button
+          onClick={() => {
+            setGoals(SCHEME);
+          }}
+          className={
+            'bg-slate-950 border py-3 duration-200 hover:border-blue-600 rounded-lg ' + 
+            (SCHEME === goals ? ' border-blue-600' : ' border-blue-400')
+          }
+          key={SCHEMEIndex}
+        >
+          <p className="capitalize">{SCHEME}</p>
+        </button>
+        
+        )
+         
+      })}
+      </div>
     </SectionWrapper>
   )
 }
