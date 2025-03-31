@@ -6,11 +6,11 @@ export default function Workout(props) {
  const {workout} = props
  
   return (
-    <SectionWrapper id={'workout'} header={"welcome to"} title={['The', 'DANGER', 'zone']}>
+    <SectionWrapper id={'workout'} header={"welcome to"} title={['The', 'FOCUS', 'zone']}>
       <div className='flex flex-col gap-4'>
          {workout.map((exercise,i)=>{
           return(
-            <ExerciseCard index={i} exercise={exercise} key={i}/>
+            <ExerciseCard i={i} exercise={exercise} key={i}/>
           )
          })}
       </div>
