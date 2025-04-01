@@ -1,19 +1,18 @@
-
 import React from 'react'
 import Button from './Button'
-export default function hero() {
-  return (
-    <div className='min-h-screen flex flex-col gap-10 items-center justify-center text-center max-w-[800px] w-full mx-auto '>
-      <div className='flex flex-col gap-4'>
-        <p>It's time to get</p>
-        <h1 className='uppercase font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl'>Your Belly <span className='text-blue-400'>FIT</span></h1>
+
+export default function Hero() {
+    return (
+        <div className='min-h-screen flex flex-col gap-10 items-center justify-center text-center max-w-[800px] w-full mx-auto p-4'>
+            <div className='flex flex-col gap-4'>
+
+                <p>IT'S TIME TO GET</p>
+                <h1 className='uppercase font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl'>Swole<span className='text-blue-400'>normous</span></h1>
+            </div>
+            <p className='text-sm md:text-base font-light'>I hereby acknowledgement that I may become <span className='text-blue-400 font-medium'>unbelievably swolenormous</span> and accept all risks of becoming the local <span className='text-blue-400 font-medium'>mass montrosity</span>, afflicted with severe body dismorphia, unable to fit through doors.</p>
+            <Button func={() => {
+                window.location.href = '#generate'
+            }} text={"Accept & Begin"}></Button>
         </div>
-        <p className='text-sm md:text-base font-light'>Transform your fitness journey with <span className='text-blue-400'>Fitness-Studio</span>, the all-in-one app designed to help you stay consistent, track progress, and <span className='text-blue-400'>achieve your fitness goals</span></p>
-       <Button 
-       func={()=>{
-        window.location.href= '#generate'
-       }}
-       text={"Accept & Begin"}/>
-    </div>
-  )
+    )
 }
