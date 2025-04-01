@@ -1,4 +1,4 @@
-//rfc
+
 import React from 'react'
 import Button from './Button'
 export default function hero() {
@@ -9,7 +9,11 @@ export default function hero() {
         <h1 className='uppercase font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl'>Your Belly <span className='text-blue-400'>FIT</span></h1>
         </div>
         <p className='text-sm md:text-base font-light'>Transform your fitness journey with <span className='text-blue-400'>Fitness-Studio</span>, the all-in-one app designed to help you stay consistent, track progress, and <span className='text-blue-400'>achieve your fitness goals</span></p>
-       <Button text={"Accept & Begin"}/>
+       <Button 
+       func={()=>{
+        window.location.href= '#generate'
+       }}
+       text={"Accept & Begin"}/>
     </div>
   )
 }
